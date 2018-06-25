@@ -22,7 +22,7 @@ public class DriverManager {
     public static void disposeDriver() {
         driver.close();
         driver.quit();
-        // Null value remove object of WebDriver class from Java memory.
+        //Null value remove object of WebDriver class from Java memory.
         driver = null;
     }
 }
