@@ -18,6 +18,7 @@ public class HomePage {
     private WebElement dropDownMenu;
 
     public HomePage() {
+        //Initialization of webelements from HomePage class
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 

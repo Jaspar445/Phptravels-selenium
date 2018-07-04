@@ -25,6 +25,7 @@ public class LoginPage {
     private WebElement warningMessage;
 
     public LoginPage() {
+        //Initialization of webelements from LoginPage class
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 

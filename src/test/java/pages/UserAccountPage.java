@@ -16,6 +16,7 @@ public class UserAccountPage {
     private WebElement userImage;
 
     public UserAccountPage() {
+        //Initialization of webelements from UserAccountPage class
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
