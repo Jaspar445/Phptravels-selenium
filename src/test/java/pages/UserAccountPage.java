@@ -20,6 +20,7 @@ public class UserAccountPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
+    //Fluent Interface is not used, because isUserImageIsDipalyed method is using for assertion
     public boolean isUserImageIsDipalyed() {
         WaitForElement.waitUntilElementIsVisible(userImage);
         boolean isDisplayed = userImage.isDisplayed();

@@ -11,16 +11,15 @@ public class PositiveLoginTest extends BaseTest {
 
     @Test
     public void asUserTryToLogInWithCorrectLoginAndPassword() {
+
         HomePage homePage = new HomePage();
-        homePage.clickOnMyAccountDropMenuAndSelectOption("Login");
+        boolean isUserImageIsDipalyed = homePage
+                .clickOnLoginLink()
+                .typeIntoUserNameField("user@phptravels.com")
+                .typeIntoPasswordField("demouser")
+                .clickOnLoginButton()
+                .isUserImageIsDipalyed();
 
-        LoginPage loginPage = new LoginPage();
-        loginPage.typeIntoUserNameField("user@phptravels.com");
-        loginPage.typeIntoPasswordField("demouser");
-        loginPage.clickOnLoginButton();
-
-        UserAccountPage userAccountPage = new UserAccountPage();
-
-        assertTrue(userAccountPage.isUserImageIsDipalyed());
+        assertTrue(isUserImageIsDipalyed);
     }
 }

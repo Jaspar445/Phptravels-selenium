@@ -29,22 +29,26 @@ public class LoginPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    public void typeIntoUserNameField(String username) {
+    public LoginPage typeIntoUserNameField(String username) {
         WaitForElement.waitUntilElementIsVisible(usernameField);
         usernameField.sendKeys(username);
         logger.info("Typed into User Name field {}", username);
+        return this;
     }
 
-    public void typeIntoPasswordField(String password) {
+    public LoginPage typeIntoPasswordField(String password) {
         passwordField.sendKeys(password);
         logger.info("Typed into Password field {}", password);
+        return this;
     }
 
-    public void clickOnLoginButton() {
+    public UserAccountPage clickOnLoginButton() {
         loginButton.click();
         logger.info("Clicked on Login button");
+        return new UserAccountPage();
     }
 
+    //Fluent Interface is not used, because getWaringMessage method is using for assertion
     public String getWaringMessage() {
         WaitForElement.waitUntilElementIsVisible(warningMessage);
         String warningText = warningMessage.getText();
