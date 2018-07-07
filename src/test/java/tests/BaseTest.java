@@ -5,13 +5,15 @@ import driver.manager.DriverUtils;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import static navigation.ApplicationURLs.APPLICATION_URL;
+
 public class BaseTest {
 
     @BeforeTest
     public void beforeTest() {
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
-        DriverUtils.navigateToPage("https://www.phptravels.net");
+        DriverUtils.navigateToPage(APPLICATION_URL);
     }
 
     @AfterTest
