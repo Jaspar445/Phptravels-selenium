@@ -17,23 +17,41 @@ public class HomePage {
     @FindBy(xpath = "//nav//*[@id='li_myaccount']/a")
     private WebElement dropDownMenu;
 
+    @FindBy(xpath = "//nav//*[@id='li_myaccount']/ul/li/a")
+    private List<WebElement> dropDownMenuOptions;
+
     public HomePage() {
         //Initialization of webelements from HomePage class
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    public void clickOnMyAccountDropMenuAndSelectOption(String option) {
+    public LoginPage clickOnLoginLink() {
         WaitForElement.waitUntilElementIsClickable(dropDownMenu);
         dropDownMenu.click();
 
-        List<WebElement> options = DriverManager.getWebDriver().findElements(By.xpath("//nav//*[@id='li_myaccount']/ul/li/a"));
-
-        for(WebElement o: options) {
-            if(o.getText().equals(option)) {
+        for(WebElement o: dropDownMenuOptions) {
+            if(o.getText().equals("Login")) {
                 o.click();
-                return;
+                return new LoginPage();
             }
         }
         logger.info("Clicked on Login link");
+
+        return new LoginPage();
+    }
+
+    public SignUpPage clickOnSignUpLink() {
+        WaitForElement.waitUntilElementIsClickable(dropDownMenu);
+        dropDownMenu.click();
+
+        for(WebElement o: dropDownMenuOptions) {
+            if(o.getText().equals("Sign Up")) {
+                o.click();
+                return new SignUpPage();
+            }
+        }
+        logger.info("Clicked on Sign Up link");
+
+        return new SignUpPage();
     }
 }
