@@ -1,3 +1,3 @@
 # Phptravels-selenium
 
-mvn clean test -Dsurefire.suiteXmlFiles=src\test\resources\all_tests_suite.xml
+mvn clean test -Dsurefire.suiteXmlFiles=src\test\resources\all_test_suite.xml
