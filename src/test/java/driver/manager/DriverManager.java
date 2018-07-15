@@ -9,25 +9,31 @@ import static driver.BrowserType.FIREFOX;
 
 public class DriverManager {
 
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
 
     public DriverManager() {}
 
     public static WebDriver getWebDriver() {
 
-        if(driver == null) {
-            driver = new BrowserFactory(getBrowserToRun(), getIsRemoteRun()).getBrowser();
+        //Check if webDriverThreadLocal has null value for actual thread
+        if(webDriverThreadLocal.get() == null) {
+            //Calling getBrowser method and added to ThreadLocal class using set method
+            webDriverThreadLocal.set(new BrowserFactory(getBrowserToRun(), getIsRemoteRun()).getBrowser());
         }
 
-        return driver;
+        return webDriverThreadLocal.get();
     }
 
     public static void disposeDriver() {
-        driver.close();
+        //Calling close method for actual thread
+        webDriverThreadLocal.get().close();
+
         if(!getBrowserToRun().equals(FIREFOX)) {
-            driver.quit();
+            //Calling quit method for actual thread
+            webDriverThreadLocal.get().quit();
         }
-        //Null value remove object of WebDriver class from Java memory.
-        driver = null;
+
+        //Calling remove method delete webdriver for actual thread
+        webDriverThreadLocal.remove();
     }
 }
