@@ -49,7 +49,7 @@ public class LoginPage {
     }
 
     //Fluent Interface is not used, because getWaringMessage method is using for assertion
-    public String getWaringMessage() {
+    public String getWarningMessage() {
         WaitForElement.waitUntilElementIsVisible(warningMessage);
         String warningText = warningMessage.getText();
         logger.info("Returned warning message was: {}", warningText);

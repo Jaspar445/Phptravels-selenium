@@ -8,4 +8,10 @@
         </classes>
     </test>
 
+    <test name="Negative Login Tests">
+        <classes>
+            <class name="tests.NegativeLoginTest"/>
+        </classes>
+    </test>
+
 </suite>
