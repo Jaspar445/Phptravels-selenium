@@ -2,6 +2,7 @@ package tests;
 
 import configuration.ConfigurationProperties;
 import configuration.PropertiesLoader;
+import driver.BrowserType;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
 import org.testng.annotations.*;
@@ -19,8 +20,10 @@ public class BaseTest {
         ConfigurationProperties.setProperties(propertiesFromFile);
     }
 
+    @Parameters("browser")
     @BeforeMethod
-    public void beforeTest() {
+    public void beforeTest(@Optional BrowserType browserType) {
+        DriverManager.setWebDriver(browserType);
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
         DriverUtils.navigateToPage(APPLICATION_URL);
