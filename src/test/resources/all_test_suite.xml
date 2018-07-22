@@ -3,12 +3,14 @@
 <suite name="All Phptravels Tests" parallel="tests" thread-count="2">
 
     <test name="Positive Login Tests">
+        <parameter name="browser" value="CHROME"/>
         <classes>
             <class name="tests.PositiveLoginTest"/>
         </classes>
     </test>
 
     <test name="Negative Login Tests">
+        <parameter name="browser" value="FIREFOX"/>
         <classes>
             <class name="tests.NegativeLoginTest"/>
         </classes>
