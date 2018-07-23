@@ -1,6 +1,7 @@
 package pages;
 
 import driver.manager.DriverManager;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -29,6 +30,7 @@ public class LoginPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
+    @Step("Type into User Name Field {username}")
     public LoginPage typeIntoUserNameField(String username) {
         WaitForElement.waitUntilElementIsVisible(usernameField);
         usernameField.sendKeys(username);
@@ -36,12 +38,14 @@ public class LoginPage {
         return this;
     }
 
+    @Step("Type into Password Field {password}")
     public LoginPage typeIntoPasswordField(String password) {
         passwordField.sendKeys(password);
         logger.info("Typed into Password field {}", password);
         return this;
     }
 
+    @Step("Click on Login Button")
     public UserAccountPage clickOnLoginButton() {
         loginButton.click();
         logger.info("Clicked on Login button");
@@ -49,6 +53,7 @@ public class LoginPage {
     }
 
     //Fluent Interface is not used, because getWaringMessage method is using for assertion
+    @Step("Getting warning message from Login Page")
     public String getWarningMessage() {
         WaitForElement.waitUntilElementIsVisible(warningMessage);
         String warningText = warningMessage.getText();

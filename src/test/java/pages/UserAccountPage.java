@@ -1,6 +1,7 @@
 package pages;
 
 import driver.manager.DriverManager;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,7 @@ public class UserAccountPage {
     }
 
     //Fluent Interface is not used, because isUserImageIsDipalyed method is using for assertion
+    @Step("Getting information whether user image is displayed")
     public boolean isUserImageIsDipalyed() {
         WaitForElement.waitUntilElementIsVisible(userImage);
         boolean isDisplayed = userImage.isDisplayed();
