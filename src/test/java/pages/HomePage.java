@@ -1,6 +1,7 @@
 package pages;
 
 import driver.manager.DriverManager;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -25,6 +26,7 @@ public class HomePage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
+    @Step("Click on Login link")
     public LoginPage clickOnLoginLink() {
         WaitForElement.waitUntilElementIsClickable(dropDownMenu);
         dropDownMenu.click();
@@ -40,6 +42,7 @@ public class HomePage {
         return new LoginPage();
     }
 
+    @Step("Click on SignUp link")
     public SignUpPage clickOnSignUpLink() {
         WaitForElement.waitUntilElementIsClickable(dropDownMenu);
         dropDownMenu.click();
@@ -50,7 +53,7 @@ public class HomePage {
                 return new SignUpPage();
             }
         }
-        logger.info("Clicked on Sign Up link");
+        logger.info("Clicked on SignUp link");
 
         return new SignUpPage();
     }
