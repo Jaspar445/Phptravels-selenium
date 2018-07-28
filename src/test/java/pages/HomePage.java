@@ -13,7 +13,7 @@ import java.util.List;
 
 public class HomePage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(HomePage.class);
 
     @FindBy(xpath = "//nav//*[@id='li_myaccount']/a")
     private WebElement dropDownMenu;
