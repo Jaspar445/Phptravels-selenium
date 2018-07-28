@@ -11,7 +11,7 @@ import waits.WaitForElement;
 
 public class UserAccountPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(UserAccountPage.class);
 
     @FindBy(xpath = "//*[@id=\"body-section\"]/div/div[1]/div/div/div/img")
     private WebElement userImage;
