@@ -24,9 +24,6 @@ public class NegativeLoginTest extends BaseTest {
                 .typeIntoUserNameField("")
                 .typeIntoPasswordField("")
                 .clickOnLoginButton();
-
-        String warningMessage = loginPage.getWarningMessage();
-
-        assertEquals(warningMessage, "Invalid Email or Password");
+        loginPage.assertThatWarningMessageIsDisplayed("Invalid Email or Password");
     }
 }
