@@ -20,12 +20,10 @@ public class PositiveLoginTest extends BaseTest {
         DriverUtils.navigateToPage(LOGIN_URL);
 
         LoginPage loginPage = new LoginPage();
-        boolean isUserImageIsDipalyed = loginPage
+        loginPage
                 .typeIntoUserNameField("user@phptravels.com")
                 .typeIntoPasswordField("demouser")
                 .clickOnLoginButton()
-                .isUserImageIsDipalyed();
-
-        assertTrue(isUserImageIsDipalyed);
+                .assertThatUserImageIsDisplayed();
     }
 }

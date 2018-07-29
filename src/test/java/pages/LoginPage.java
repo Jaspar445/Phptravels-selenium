@@ -1,6 +1,7 @@
 package pages;
 
 import driver.manager.DriverManager;
+import genericAssertions.AssertWebElement;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -52,12 +53,11 @@ public class LoginPage {
         return new UserAccountPage();
     }
 
-    //Fluent Interface is not used, because getWaringMessage method is using for assertion
-    @Step("Getting warning message from Login Page")
-    public String getWarningMessage() {
+    @Step("Assert that warning message {warningMessage} is displayed")
+    public LoginPage assertThatWarningMessageIsDisplayed(String message) {
+        logger.info("Checking if warning message {} is displayed", message);
         WaitForElement.waitUntilElementIsVisible(warningMessage);
-        String warningText = warningMessage.getText();
-        logger.info("Returned warning message was: {}", warningText);
-        return warningText;
+        AssertWebElement.assertThat(warningMessage).isDisplayed().hasText(message);
+        return this;
     }
 }

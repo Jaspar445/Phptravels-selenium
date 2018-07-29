@@ -1,6 +1,7 @@
 package pages;
 
 import driver.manager.DriverManager;
+import genericAssertions.AssertWebElement;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,12 +22,11 @@ public class UserAccountPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    //Fluent Interface is not used, because isUserImageIsDipalyed method is using for assertion
-    @Step("Getting information whether user image is displayed")
-    public boolean isUserImageIsDipalyed() {
+    @Step("Assert that user image is displayed")
+    public UserAccountPage assertThatUserImageIsDisplayed() {
+        logger.info("Checking if user image is displayed");
         WaitForElement.waitUntilElementIsVisible(userImage);
-        boolean isDisplayed = userImage.isDisplayed();
-        logger.info("Returning status of user image after login: {}", isDisplayed);
-        return isDisplayed;
+        AssertWebElement.assertThat(userImage).isDisplayed();
+        return this;
     }
 }
