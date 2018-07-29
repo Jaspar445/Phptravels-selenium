@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="All Phptravels Tests" parallel="tests" thread-count="2">
 
+    <listeners>
+        <listener class-name="utils.testingListeners.TestListener"/>
+    </listeners>
+
     <test name="Positive Login Tests">
         <parameter name="browser" value="CHROME"/>
         <classes>
